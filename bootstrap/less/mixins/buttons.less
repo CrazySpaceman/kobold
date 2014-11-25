@@ -1,0 +1,62 @@
+// Button variants
+//
+// Easily pump out default styles, as well as :hover, :focus, :active,
+// and disabled options for all buttons
+
+.button-variant(@color; @background; @border) {
+  color: @color;
+  background-color: @background;
+  border-color: @border;
+
+  &:hover,
+  &:focus,
+  &.focus,
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    color: @color;
+    background-color: darken(@background, 10%);
+        border-color: darken(@border, 12%);
+  }
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    background-image: none;
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &,
+    &:hover,
+    &:focus,
+    &.focus,
+    &:active,
+    &.active {
+      background-color: @background;
+          border-color: @border;
+    }
+  }
+
+  .badge {
+    color: @background;
+    background-color: @color;
+  }
+}
+
+// Button sizes
+.button-size(@padding-vertical; @padding-horizontal; @font-size; @line-height; @border-radius) {
+  padding: @padding-vertical @padding-horizontal;
+  font-size: @font-size;
+  line-height: @line-height;
+  border-radius: @border-radius;
+}
+@arrow-right: url('../../images/arrow-right.png') no-repeat 90% 48%;
+.button-gradient (@start, @end) {
+    background: @arrow-right, -webkit-linear-gradient(bottom, @start, @end 100%); /* For Chrome and Safari */
+    background: @arrow-right, -moz-linear-gradient(bottom, @start, @end 100%); /* For old Fx (3.6 to 15) */
+    background: @arrow-right, -ms-linear-gradient(bottom, @start, @end 100%); /* For pre-releases of IE 10*/
+    background: @arrow-right, -o-linear-gradient(bottom, @start, @end 100%); /* For old Opera (11.1 to 12.0) */
+    /*background: @arrow-right, -webkit-gradient(linear, to top, to bottom, color-stop(0%, @start), color-stop(100%, @end));
+    background: @arrow-right, -webkit-linear-gradient(to top, @start, @end 100%); background: -moz-linear-gradient(to top, @start, @end 100%);
+    background: @arrow-right, -o-linear-gradient(to top, @start, @end 100%); background: linear-gradient(to top, @start, @end 100%); /* Standard syntax; must be last */
+}
